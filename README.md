@@ -190,7 +190,7 @@ sudo chmod a+r /tmp/*.keytab
 **Part 3
 Testing your principals and keytabs**
 
-Download those to your kerberos user server. In this example, we will copy it to a local laptop from the kerberos server and then back up to the kerberos user server.
+Download those to your kerberos user server. In this example, we will copy it to a local laptop from the kerberos server and then back up to the kerberos user server. In the real world again, you might want to put those somewhere other than /tmp so they survive a reboot.
 ```
 Copy to local machine
 scp -i ~<your pem file>.pem centos@<your kerberos server EC2 public DNS hostname>:/tmp/*.keytab /tmp/
