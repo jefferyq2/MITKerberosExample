@@ -29,7 +29,7 @@ Part 2 - create your principals and keytabs
 <br/>
 Part 3 - test it out
 
-<br/>
+<br/><br/>
 
 **Part 1
 Creating your Kerberos server environment**
@@ -145,7 +145,7 @@ Congrats! You have a kerberos server up and running!
 
 Now onto Part 2...
 
-<br/>
+<br/><br/>
 
 **Part 2
 Create your principals and keytabs**
@@ -185,7 +185,7 @@ sudo chmod a+r /tmp/*.keytab
 ```
 
 
-<br/><br/><br/>
+<br/><br/>
 
 **Part 3
 Testing your principals and keytabs**
