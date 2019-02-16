@@ -65,10 +65,10 @@ In this example, we will copy it to a local laptop from the kerberos server and 
 
 ```
 Copy to local machine
-scp -i ~<your pem file>.pem centos@<your kerberos server EC2 public DNS hostname>:/tmp/*.keytab /tmp/
+scp -i ~<your pem file>.pem centos@<your kerberos server>:/tmp/*.keytab /tmp/
 
 Upload to kerberos user server
-scp -i ~<your pem file>.pem *.keytab ubuntu@<your kerberos user EC2 public DNS hostname>:/tmp/
+scp -i ~<your pem file>.pem *.keytab ubuntu@<your kerberos user server>:/tmp/
 ```
 
 Now login to your kerberos user server.
@@ -113,7 +113,7 @@ That's it.
 
 As a more concrete example, consider the following. You not only have your own MIT Kerberos server environment (or you have access to one), but you also have valid keytab files from which to grab tickets. You also have a Kafka environment running SASL_SSL and you want to start it using a valid keytab file. If you need help setting that up, you can view the other repo KafkaSASL_SSLExample.
 
-But again, let's say we have Confluent Kafka and krb5-user running on ubuntu and krb5-server running on a separate CentOS box. It's the same thing as above, but maybe you have a m4.xlarge or something running both krb5-user and Confluent Kafka.
+But again, let's say we have Confluent Kafka and krb5-user running on the same ubuntu server and krb5-server running on a separate CentOS server.
 
 On the ubuntu server, Confluent Kafka is running as the user ubuntu.
 
@@ -160,3 +160,5 @@ Start the other available components:
   control-center
 
 ./confluent start <other components in the list>
+
+Verify everything is ok!
