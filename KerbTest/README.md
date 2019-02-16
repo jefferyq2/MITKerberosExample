@@ -4,11 +4,15 @@ Terrific, let's test things out now that you have a Kerberos server and Kerberos
 
 In the real world, your administrators will have tighter controls around such things as linux file permissions and passwords for principals.
 
+<br/>
+
 **Testing your principals and keytabs**
 
 The steps here will include creating kerberos principals and keytabs (exporting principals into dedicated keytab files) and requesting and testing tickets.
 
 On your kerberos server, let's create some user principals using using kadmin.local utility. Note, the "kadmin.local" can only be used on the kerberos host itself. You can use "kadmin" if you were doing this from a remote host.
+
+<br/>
 
 **Create our keytab files**
 
@@ -50,6 +54,8 @@ sudo kadmin.local -q "xst -kt /tmp/admin.user.keytab admin@KAFKA.SECURE"
 
 sudo chmod a+r /tmp/*.keytab
 ```
+
+<br/>
 
 **Get a ticket**
 
@@ -101,13 +107,17 @@ KVNO Timestamp           Principal
 
 That's it.
 
-As a more concrete example, consider the following.
+<br/>
 
-Let's say we have Confluent Kafka and krb5-user running on ubuntu and krb5-server running on a separate CentOS box. It's the same thing as above, but maybe you have a m4.xlarge or something running both krb5-user and Confluent Kafka.
+**Test out a Kafka server example**
+
+As a more concrete example, consider the following. You not only have your own MIT Kerberos server environment (or you have access to one), but you also have valid keytab files from which to grab tickets. You also have a Kafka environment running SASL_SSL and you want to start it using a valid keytab file. If you need help setting that up, you can view the other repo KafkaSASL_SSLExample.
+
+But again, let's say we have Confluent Kafka and krb5-user running on ubuntu and krb5-server running on a separate CentOS box. It's the same thing as above, but maybe you have a m4.xlarge or something running both krb5-user and Confluent Kafka.
 
 On the ubuntu server, Confluent Kafka is running as the user ubuntu.
 
-So on the Kerberos server machine, let's create the principal as such:
+So on the Kerberos server machine, let's create the principal and keytab as such:
 
 ```
 sudo kadmin.local -q "add_principal -randkey ubuntu/<your kafka server>@KAFKA.SECURE"
@@ -115,7 +125,7 @@ sudo kadmin.local -q "add_principal -randkey ubuntu/<your kafka server>@KAFKA.SE
 sudo kadmin.local -q "xst -kt /tmp/kafka.service.keytab ubuntu/<your kafka server>@KAFKA.SECURE"
 ```
 
-Copy those keytabs to local laptop and up to the krb5-user/Kafka server.
+Copy those keytabs to local laptop and up to the krb5-user/Kafka server so that when we start Kafka (and pass in the proper JaaS file upon Kafka startup), it will have access to the right keytab.
 
 ```
 scp -i ~<your pem file>.pem centos@<your Kerberos server>:/tmp/*.keytab /tmp/

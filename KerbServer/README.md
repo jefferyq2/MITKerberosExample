@@ -9,6 +9,7 @@ In this walkthrough, we will use a tiny CentOS box in AWS. Something like this w
 t2.micro, AWS Marketplace (search for CentOS), CentOS 7 (x86_64) - with Updates HVM
 
 <br/>
+
 **Creating your Kerberos server environment**
 
 Launch a CentOS AMI image from the AWS marketplace and setup your VPC, security group, etc. Note, kerberos KDC by default uses on port 88.

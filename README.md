@@ -9,26 +9,14 @@ Naturally in the real world you will use password policies, adhere to your admin
 
 This assumes you already possess some know-how in AWS (SSH into boxes, create or use an appropriate VPC,create or use an appropriate security group) as well as run some basic linux commands. You probably would not be here if that was foreign.
 
-**Kerberos server**
-
-You can use whatever boxes and O/S you want.
-
-In this walkthrough, we will use a tiny CentOS box in AWS. Something like this would be fine:<br/>
-t2.micro, AWS Marketplace (search for CentOS), CentOS 7 (x86_64) - with Updates HVM
-
-**Kerberos user server**
-
-Also, we will use a tiny Ubuntu box in AWS. Something like this would be fine:<br/>
-t2.micro, AWS Marketplace (search for Ubuntu), Ubuntu 16.04 LTS - Xenial (HVM)
-
 **What we will do**
 
 See the subdirectories for details.
 
 Part 1 - KerbServer - create your kerberos server environment
 <br/>
-Part 2 - KerbUser - create your principals and keytabs
+Part 2 - KerbUser - create your kerberos user environment
 <br/>
-Part 3 - KerbTest - test it out
+Part 3 - KerbTest - successfully grab a ticket
 
 That's it.

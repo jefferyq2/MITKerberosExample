@@ -6,6 +6,8 @@ We will use a tiny Ubuntu box in AWS. Something like this would be fine:
 
 t2.micro, AWS Marketplace (search for Ubuntu), Ubuntu 16.04 LTS - Xenial (HVM)
 
+<br/>
+
 **Create your kerberos user server**
 
 Install krb5-user service on the kerberos user machine and point it to the kerberos server.
